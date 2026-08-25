@@ -4,6 +4,6 @@ title: "GO2 Visual Paw Interaction"
 type: software
 authors:
   - name: "tuoLuoSuan"
-version: 0.1.0-private
+version: 0.1.0
 date-released: 2026-08-25
 repository-code: "https://github.com/tuoLuoSuan/go2-visual-paw-interaction"

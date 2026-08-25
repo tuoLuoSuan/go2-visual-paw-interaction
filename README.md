@@ -2,7 +2,7 @@
 
 这是一个面向 Unitree GO2 EDU 的视觉引导前足人机交互研究原型。系统使用机器人自带前置单目 RGB 相机检测用户手部，在受约束的固定交互区域内判断手位于画面左侧或右侧，随后由趴姿控制器选择对应前足、执行接近、接触保持和安全退出。
 
-本仓库是论文审阅用的 **Private GitHub 研究包**，不是成熟产品，也没有授予公开复用许可证。
+本仓库是面向论文核验与学术交流的 **公开 GitHub 研究包**，不是成熟产品。仓库当前未附带开源许可证；公开可见不等于自动授予复制、修改或再分发许可。
 
 ## 研究范围
 
@@ -76,4 +76,4 @@ python tools/release_audit.py
 
 ## English summary
 
-This private research package contains the paper-aligned code, deployment models, compact real-robot evidence and figure sources for a Unitree GO2 EDU monocular-RGB paw-interaction prototype. The main experiment comprises ten commanded prone trials: observer-rated contact and a hold of at least 0.6 s were reported in 10/10 trial segments, while clean execution completed in 9/10 attempts and one attempt aborted with a tracking error after observed contact. Correct paw selection was not measurable from the lateral recording view. The three standing recordings are a separate qualitative extension. The system is restricted to a predefined interaction zone and does not claim general monocular 3D localization.
+This public research package contains the paper-aligned code, deployment models, compact real-robot evidence and figure sources for a Unitree GO2 EDU monocular-RGB paw-interaction prototype. The main experiment comprises ten commanded prone trials: observer-rated contact and a hold of at least 0.6 s were reported in 10/10 trial segments, while clean execution completed in 9/10 attempts and one attempt aborted with a tracking error after observed contact. Correct paw selection was not measurable from the lateral recording view. The three standing recordings are a separate qualitative extension. The system is restricted to a predefined interaction zone and does not claim general monocular 3D localization. No open-source licence is granted by repository visibility alone.

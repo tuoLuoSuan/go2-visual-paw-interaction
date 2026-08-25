@@ -1,6 +1,6 @@
 # Data and code availability status
 
-本文件描述当前 **Private GitHub 审阅包** 的实际状态，不等同于投稿时的公开数据仓库声明。
+本文件描述当前 **公开 GitHub 研究包** 的实际状态。该仓库可供读者浏览和核验，但尚不等同于具有 DOI 与明确数据许可证的正式归档数据集。
 
 | 材料 | 当前位置与访问状态 |
 |---|---|
@@ -15,4 +15,4 @@
 | MediaPipe task 模型 | 不包含；准确来源与许可配对尚未闭环 |
 | 稳定公开标识符 | 尚未分配；当前没有创建 Zenodo、OSF 或机构仓库 DOI |
 
-若论文进入正式投稿，公开代码链接、数据仓库标识符、许可和视频访问方式必须与投稿系统中的 Data Availability/Code Availability 保持一致。Private GitHub 链接不能被描述为面向读者的公开数据集。
+若论文进入正式投稿，代码链接、数据仓库标识符、许可和视频访问方式必须与投稿系统中的 Data Availability/Code Availability 保持一致。当前 GitHub 仓库已经公开，但没有 DOI 或开放许可证，且不包含原始视频、第三方 MediaPipe task 模型和相机内参实体文件，因此不能描述为完整的公共数据集或从零复现包。
