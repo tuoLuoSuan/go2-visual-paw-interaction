@@ -1,0 +1,5 @@
+endpoint,count,total,evidence_source,n_definition
+视频观察接触,10,10,FORMAL-02_ANNOTATION.md,一次被命令执行的真机尝试
+视频观察保持不少于0.6秒,10,10,FORMAL-02_ANNOTATION.md,一次被命令执行的真机尝试
+完整执行,9,10,十份运行日志与CORRECTION_RECORD.md,一次被命令执行的真机尝试
+安全退出组成完成,10,10,十份schema v4 trial JSON与运行日志,一次被命令执行的真机尝试

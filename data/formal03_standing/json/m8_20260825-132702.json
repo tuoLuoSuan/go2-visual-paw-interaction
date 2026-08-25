@@ -1,0 +1,119 @@
+{
+  "schema_version": 3,
+  "run_id": "m8_20260825-132702",
+  "start_t": "2026-08-25T13:26:25.720395",
+  "end_t": "2026-08-25T13:27:02.019606",
+  "outcome": "ok",
+  "abort_reason": "",
+  "controller": "policy:real_go2/best_gru_standing_px_v4mask.npz",
+  "policy_sha256": "5a6cdb1a2bc86a99cb223196d9eac4ebf748e07aef1e32f08f3ca4cebdb822d5",
+  "firmware": "mcf(version【待补】)",
+  "camera": "GO2_front_RGB(VideoClient)",
+  "calibration_id": "placeholder",
+  "floor": "",
+  "light": "",
+  "trial_index": "",
+  "paw_selection": {
+    "detected_hand_side": null,
+    "expected_paw": "not_measured",
+    "selected_paw": null,
+    "paw_selected_correctly": "not_measured"
+  },
+  "contact": {
+    "detector_triggered": true,
+    "detector_trigger_count": 8,
+    "max_detector_hold_s": 0.0,
+    "contact_ground_truth": "not_measured",
+    "contact_confirmation_source": "",
+    "contact_confirmed": "not_measured"
+  },
+  "stages": {
+    "hand_detect": {
+      "name": "hand_detect",
+      "start_t": "2026-08-25T13:27:02.019606",
+      "end_t": "2026-08-25T13:27:02.019606",
+      "status": "passed",
+      "criterion": "视觉流输出非空",
+      "failure": ""
+    },
+    "paw_select": {
+      "name": "paw_select",
+      "start_t": null,
+      "end_t": null,
+      "status": "not_measured",
+      "criterion": "",
+      "failure": "无手位置，未发生选足"
+    },
+    "target_reach": {
+      "name": "target_reach",
+      "start_t": null,
+      "end_t": null,
+      "status": "not_measured",
+      "criterion": "",
+      "failure": "足端-目标距离需相机标定【待标定】"
+    },
+    "contact_detector_trigger": {
+      "name": "contact_detector_trigger",
+      "start_t": "2026-08-25T13:27:02.019606",
+      "end_t": "2026-08-25T13:27:02.019606",
+      "status": "passed",
+      "criterion": "tau_est 尖峰检测器触发（非物理接触确认）",
+      "failure": ""
+    },
+    "hold": {
+      "name": "hold",
+      "start_t": "2026-08-25T13:27:02.019606",
+      "end_t": "2026-08-25T13:27:02.019606",
+      "status": "passed",
+      "criterion": "连续检测器保持 >= 0.00s",
+      "failure": ""
+    },
+    "safe_retreat": {
+      "name": "safe_retreat",
+      "start_t": "2026-08-25T13:27:02.019606",
+      "end_t": "2026-08-25T13:27:02.019606",
+      "status": "passed",
+      "criterion": "收回完成 且 SelectMode=0 且 CheckMode 有名 且 恢复动作=0",
+      "failure": ""
+    }
+  },
+  "retreat_evidence": {
+    "retreat_completed": true,
+    "select_mode_code": 0,
+    "check_mode_name": "mcf",
+    "restore_code": 0,
+    "failure": "",
+    "steps": []
+  },
+  "endpoints": {
+    "reach_success": "not_measured",
+    "handshake_success": "not_measured"
+  },
+  "metrics": {
+    "max_joint_tracking_error_rad": 0.0,
+    "max_joint_tracking_error_joint": "",
+    "max_pitch_deg": 0.0,
+    "end_temp_max_c": 48.0
+  },
+  "params": {
+    "network_interface": "redacted_private_interface",
+    "dry_run": "False",
+    "confirm": "GO2-STAND-HS-20260822",
+    "site_check": "False",
+    "policy": "real_go2/best_gru_standing_px_v4mask.npz",
+    "hand_port": "4300",
+    "kp": "300.0",
+    "kd": "10.0",
+    "active_kp": "200.0",
+    "active_kd": "10.0",
+    "hold_seconds": "45.0",
+    "hand_lost_frames": "1500",
+    "predict_latency": "0.1",
+    "py_bias": "-0.15",
+    "debug_joints": "False",
+    "max_start_temp": "70.0",
+    "trial_log_dir": "evidence/formal_trials"
+  },
+  "python": "3.10.12",
+  "git_commit": ""
+}

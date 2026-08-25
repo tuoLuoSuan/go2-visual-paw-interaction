@@ -1,0 +1,134 @@
+{
+  "schema_version": "4",
+  "trial_id": "FORMAL-02-004",
+  "session_id": "FORMAL-02",
+  "trial_index": 4,
+  "execution_status": "ok",
+  "abort_reason": "",
+  "wall_clock_source": "system-utc",
+  "started_at_wall_ms": 1787633219119,
+  "ended_at_wall_ms": 1787633258958,
+  "started_at_monotonic_ms": 149154830,
+  "ended_at_monotonic_ms": 149194669,
+  "clock_sync": {
+    "robot_clock_offset_ms": null,
+    "robot_clock_uncertainty_ms": null,
+    "video_clock_offset_ms": null,
+    "video_clock_uncertainty_ms": null,
+    "sync_method": "not_measured",
+    "estimated_at_wall_ms": null
+  },
+  "stages": [
+    {
+      "name": "reach",
+      "record_point_start_ms_wall": 1787633219119,
+      "record_point_start_ms_mono": 149154830,
+      "record_point_end_ms_wall": 1787633230698,
+      "record_point_end_ms_mono": 149166408,
+      "status": "passed"
+    },
+    {
+      "name": "track",
+      "record_point_start_ms_wall": 1787633230698,
+      "record_point_start_ms_mono": 149166408,
+      "record_point_end_ms_wall": 1787633254042,
+      "record_point_end_ms_mono": 149189752,
+      "status": "passed"
+    },
+    {
+      "name": "retreat",
+      "record_point_start_ms_wall": 1787633254042,
+      "record_point_start_ms_mono": 149189752,
+      "record_point_end_ms_wall": 1787633258956,
+      "record_point_end_ms_mono": 149194667,
+      "status": "passed"
+    }
+  ],
+  "event_trace": [
+    {
+      "event_id": 0,
+      "stage_name": "reach",
+      "record_point": "stage_start",
+      "wall_ms": 1787633219119,
+      "mono_ms": 149154830,
+      "source": "main"
+    },
+    {
+      "event_id": 1,
+      "stage_name": "reach",
+      "record_point": "stage_end",
+      "wall_ms": 1787633230698,
+      "mono_ms": 149166408,
+      "source": "main"
+    },
+    {
+      "event_id": 2,
+      "stage_name": "track",
+      "record_point": "stage_start",
+      "wall_ms": 1787633230698,
+      "mono_ms": 149166408,
+      "source": "main"
+    },
+    {
+      "event_id": 3,
+      "stage_name": "track",
+      "record_point": "stage_end",
+      "wall_ms": 1787633254042,
+      "mono_ms": 149189752,
+      "source": "main"
+    },
+    {
+      "event_id": 4,
+      "stage_name": "retreat",
+      "record_point": "stage_start",
+      "wall_ms": 1787633254042,
+      "mono_ms": 149189752,
+      "source": "main"
+    },
+    {
+      "event_id": 5,
+      "stage_name": "retreat",
+      "record_point": "stage_end",
+      "wall_ms": 1787633258956,
+      "mono_ms": 149194667,
+      "source": "main"
+    }
+  ],
+  "identity": {
+    "commit": "98f7bb80191a1914db9ff5b8c735d7ab901f3593",
+    "code_sha256": "55998c4c98f6bab844ce9dd3887ccefb43062a79d8ceb352207aeb3c181e35b4",
+    "model_sha256": "9de29f01893534b20cd395de82d3d6096a41a1c17d0db1b43d586b59a00f7958",
+    "schema_sha256": "f86e84befc165bc354599e77e0c45b40764d1e22db090d18274f351a7430d84e",
+    "firmware": "mcf",
+    "calibration_id": "intrinsics_calib_20260824_accepted",
+    "floor": "wood-indoor",
+    "light": "indoor",
+    "deploy_params": {
+      "kp": 120.0,
+      "contact_hold_s": 0.6
+    },
+    "human_intervention": []
+  },
+  "contact": {
+    "contact_hold_s": 0.6,
+    "detector_trigger_count": 17,
+    "contact_ground_truth": "not_measured",
+    "contact_confirmation_source": "none"
+  },
+  "endpoints": {
+    "reach_success": "not_measured",
+    "handshake_success": "not_measured"
+  },
+  "paw_selection": {
+    "expected_paw": "not_measured",
+    "selected_paw": "not_measured",
+    "paw_selected_correctly": "not_measured"
+  },
+  "safety_retreat": {
+    "retreat_completed": true,
+    "select_mode_code": 0,
+    "check_mode_name": "mcf",
+    "restore_code": 0,
+    "safety_alarms": []
+  }
+}

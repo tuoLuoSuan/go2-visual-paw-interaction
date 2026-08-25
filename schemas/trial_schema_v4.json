@@ -1,0 +1,74 @@
+# P0-2 trial schema v4（冻结候选，阶段 A readiness；批准前不得称"已冻结"）
+
+状态：`freeze_scope=pre-acquisition-readiness`；本文档与 `validate_trial_schema.py`
+为候选冻结对象，最终冻结需作者/PI 批准（阶段 B）。
+
+## 顶层字段
+
+| 字段 | 类型 | 必填 | 说明 / 校验规则 |
+|---|---|---|---|
+| schema_version | string | 是 | 固定 "4" |
+| trial_id | string | 是 | 非空、唯一（跨 session）；阶段 C 的主键 |
+| session_id | string | 是 | 非空 |
+| trial_index | int | 是 | >=1，session 内递增 |
+| execution_status | enum | 是 | ok / aborted / not_run —— 与 endpoint 分离 |
+| abort_reason | string | 是 | execution_status=aborted 时非空 |
+| wall_clock_source | string | 是 | 如 "system-utc" |
+| started_at_wall_ms / ended_at_wall_ms | int | 是 | 毫秒级 wall-clock；end>=start |
+| started_at_monotonic_ms / ended_at_monotonic_ms | int | 是 | 毫秒级 monotonic；end>=start |
+| clock_sync | object | 是 | 见下；跨时钟 offset/uncertainty 未测量时显式 null + sync_method="not_measured" |
+| stages | array | 是 | 每阶段真实记录点时间（见下） |
+| event_trace | array | 是 | append-only 事件流（见下） |
+| identity | object | 是 | 身份/环境字段（见下） |
+| contact | object | 是 | contact_hold_s 必填 fail-closed（见下） |
+| endpoints | object | 是 | reach_success / handshake_success，与 execution_status 分离 |
+| paw_selection | object | 是 | expected_paw 不得由 selected_paw/算法反推（P0-3） |
+| safety_retreat | object | 是 | 组成字段独立复算（见下） |
+
+## clock_sync（v3.1 增补）
+`robot_clock_offset_ms`、`robot_clock_uncertainty_ms`、`video_clock_offset_ms`、
+`video_clock_uncertainty_ms`（未测量一律 null）、`sync_method`（未测量写
+"not_measured"）、`estimated_at_wall_ms`（未测量 null）。正式 trial 必须给出
+同步方法与不确定性，用于把 trace 事件映射到同一时间基准。
+
+## stages / event_trace（真实时序，禁止统一结束回填）
+- stage: `name`（非空）、`record_point_start_ms_wall/end_ms_wall/start_ms_mono/end_ms_mono`、
+  `status ∈ not_started|passed|failed|not_measured`。start/end 必须来自明确记录点
+  （打印/打点处采样），每阶段 end>=start 且在 trial 边界内；禁止所有阶段
+  start==end==trial_end 的统一回填。
+- event_trace（append-only）：`event_id`（严格递增 uint64）、`stage_name`、
+  `record_point ∈ stage_start|stage_end|safety_event|abort|human_intervention|contact_detector|...`、
+  `wall_ms`、`mono_ms`（严格递增）、`source`（线程/组件）。JSON 的阶段时间与
+  持续时间必须能从 trace 逐事件重算一致。
+
+## identity
+`commit`（非空，禁止 【待补】/placeholder/TBD）、`code_sha256`、`model_sha256`、
+`schema_sha256`（64 位 hex）、`firmware`、`calibration_id`（非空且非 placeholder；
+未标定时为 null 且 endpoints 保持 not_measured）、`floor`、`light`、
+`deploy_params`、`human_intervention`（[{at_wall_ms, note}]）。
+
+## contact（fail-closed）
+`contact_hold_s`（number，>0，**缺失或 <=0 即校验失败**）、
+`detector_trigger_count`、`contact_ground_truth ∈ not_measured|true|false`、
+`contact_confirmation_source`（"independent_annotation" 或 "none"）。
+规则：`contact_ground_truth=true` 必须伴随 independent_annotation 来源；
+仅 detector trigger 而 ground_truth=not_measured 时，handshake_success 不得为 true。
+
+## endpoints / paw_selection
+`reach_success`、`handshake_success` ∈ not_measured|true|false；与
+execution_status 正交。`expected_paw` ∈ not_measured|FL|FR|...；
+`paw_selected_correctly` ∈ not_measured|true|false；禁止由 selected_paw、
+tau 检测器或算法输出反推 expected_paw/contact_ground_truth/reach/handshake。
+
+## safety_retreat（独立复算）
+`retreat_completed`(bool)、`select_mode_code`(int)、`check_mode_name`(非空 string)、
+`restore_code`(int)、`safety_alarms`(array)。若 retreat_completed=true 而任一
+组成字段缺失/非法 → 校验失败。安全退出结论必须由组成字段独立复算，不得仅凭
+单一汇总布尔值。
+
+## 负例清单（validate_trial_schema.py 的 negative fixtures）
+1. 空 commit；2. placeholder 标定；3. 空/0 trial_index；4. 统一结束回填
+（各阶段 start==end==trial_end）；5. 缺 contact_hold_s 或 =0；6. 只 detector
+trigger（handshake_success=true + contact_ground_truth=not_measured）；
+7. safety_retreat 组成字段缺失；8. trace event_id/mono 非单调；9. start>end。
+全部必须非零退出。

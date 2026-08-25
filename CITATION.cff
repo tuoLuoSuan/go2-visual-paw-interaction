@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this research prototype, cite the associated manuscript and this repository release."
+title: "GO2 Visual Paw Interaction"
+type: software
+authors:
+  - name: "tuoLuoSuan"
+version: 0.1.0-private
+date-released: 2026-08-25
+repository-code: "https://github.com/tuoLuoSuan/go2-visual-paw-interaction"

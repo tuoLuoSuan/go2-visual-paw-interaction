@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+*.mp4
+*.mov
+*.avi
+*.pem
+*.key
+hand_landmarker.task
+unitree_mujoco/
+unitree_sdk2_python/
+cyclonedds/
+simulation/output/
