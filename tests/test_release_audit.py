@@ -48,6 +48,21 @@ class ReleaseAuditTest(unittest.TestCase):
         self.assertNotIn("/.git/", text)
         self.assertNotIn("MANIFEST.sha256", text)
 
+    def test_manifest_uses_lf_line_endings(self):
+        release_audit.write_manifest()
+        payload = (ROOT / "MANIFEST.sha256").read_bytes()
+        self.assertNotIn(b"\r\n", payload)
+
+    def test_crlf_text_fixture_is_rejected(self):
+        fixture = ROOT / "crlf_fixture.md"
+        self.assertFalse(fixture.exists())
+        fixture.write_bytes(b"first\r\nsecond\r\n")
+        try:
+            errors = release_audit.audit()
+            self.assertTrue(any("crlf-text" in item for item in errors))
+        finally:
+            fixture.unlink(missing_ok=True)
+
     def test_release_file_list_excludes_python_caches(self):
         paths = [path.relative_to(ROOT).as_posix() for path in release_audit.release_files()]
         self.assertFalse(any("__pycache__" in path for path in paths))

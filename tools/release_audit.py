@@ -11,7 +11,7 @@ EXPECTED_MODEL_SHA = "9de29f01893534b20cd395de82d3d6096a41a1c17d0db1b43d586b59a0
 EXPECTED_STANDING_MODEL_SHA = "5a6cdb1a2bc86a99cb223196d9eac4ebf748e07aef1e32f08f3ca4cebdb822d5"
 FORBIDDEN_NAMES = {".ds_ssh", ".ds_remote", ".learnings", "hand_landmarker.task"}
 FORBIDDEN_SUFFIXES = {".mp4", ".mov", ".avi", ".pem", ".key"}
-TEXT_SUFFIXES = {".py", ".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".cff"}
+TEXT_SUFFIXES = {".py", ".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".cff", ".svg"}
 EXCLUDED_MANIFEST_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".venv", "venv"}
 PATTERNS = {
     "private-key": re.compile(r"BEGIN [A-Z ]*PRIVATE KEY"),
@@ -55,7 +55,10 @@ def audit() -> list[str]:
         if path.suffix.lower() in FORBIDDEN_SUFFIXES:
             errors.append(f"forbidden media/key suffix: {rel.as_posix()}")
         if path.suffix.lower() in TEXT_SUFFIXES:
-            text = path.read_text(encoding="utf-8", errors="replace")
+            payload = path.read_bytes()
+            if b"\r\n" in payload:
+                errors.append(f"crlf-text: {rel.as_posix()}")
+            text = payload.decode("utf-8", errors="replace")
             for label, pattern in PATTERNS.items():
                 if pattern.search(text):
                     errors.append(f"{label}: {rel.as_posix()}")
@@ -94,7 +97,8 @@ def write_manifest() -> None:
         f"{sha256(path)}  {path.relative_to(ROOT).as_posix()}"
         for path in release_files()
     ]
-    (ROOT / "MANIFEST.sha256").write_text("\n".join(rows) + "\n", encoding="utf-8")
+    with (ROOT / "MANIFEST.sha256").open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write("\n".join(rows) + "\n")
 
 
 if __name__ == "__main__":

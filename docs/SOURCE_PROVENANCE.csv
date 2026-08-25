@@ -1,5 +1,5 @@
 "release_path","source_path","source_sha256","release_sha256","change_note"
-"real_go2/real_vmc_reach_m8_v11.py","remediation/stage_a/src/real_vmc_reach_m8_v11.py","736233083dad226e3dbcddaf9315e9185a63141410782d8ce33b963dcc75e481","736233083dad226e3dbcddaf9315e9185a63141410782d8ce33b963dcc75e481","exact copy"
+"real_go2/real_vmc_reach_m8_v11.py","remediation/stage_a/src/real_vmc_reach_m8_v11.py","736233083dad226e3dbcddaf9315e9185a63141410782d8ce33b963dcc75e481","7d5953ac60cbd097475cb85c88564afc81503d9951fe384e625e13d4873c943a","line endings normalized to LF; runtime logic unchanged"
 "real_go2/trial_record_v4.py","remediation/stage_a/src/trial_record_v4.py","f86e84befc165bc354599e77e0c45b40764d1e22db090d18274f351a7430d84e","f86e84befc165bc354599e77e0c45b40764d1e22db090d18274f351a7430d84e","exact copy"
 "real_go2/real_vision_feed_m3.py","real_go2/real_vision_feed_m3.py","feab83f0747136f29d1038fd8480c774e893653ae1bf34cebae544dc27a83dad","dabe5b17e692fbae24bd42b42d56a589b2bc586caddf67a95b183228547690ff","network-interface example sanitized; runtime logic unchanged"
 "real_go2/policy_runner.py","real_go2/policy_runner.py","461bd983c31aacedadb7b0e415edc81158444999def9ea51f07c0151421d06a6","461bd983c31aacedadb7b0e415edc81158444999def9ea51f07c0151421d06a6","exact copy"
