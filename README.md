@@ -4,6 +4,33 @@
 
 本仓库是面向论文核验与学术交流的 **公开 GitHub 研究包**，不是成熟产品。仓库当前未附带开源许可证；公开可见不等于自动授予复制、修改或再分发许可。
 
+## 论文与阅读入口
+
+**Constrained Monocular Vision-Guided Handshake Interaction for Quadruped Robots**
+
+Liangbin Wu†, Shouchen Chen†, Yihuang Zheng, Hongxin Chen and Xiaowei Chen*.
+
+† 吴良斌、陈守晨共同第一作者；* 陈小薇为通讯作者。
+
+论文已被 **CCICS 2026 接收，稿件编号 CC178**。这是录用状态，不代表已出版或已被 EI 检索。最终出版信息和 DOI 尚未确认；PDF 待公开权限核实后再添加，私人录用邮件与注册材料不上传。
+
+- [论文信息与结果—材料索引](docs/PAPER.md)
+- [快速开始：无需机器狗的离线检查](docs/QUICKSTART.md)
+- [论文中的趴姿 MLP / GRU 对比](data/policy_comparison/README.md)
+- [v0.2.0 更新说明](docs/RELEASE_NOTES_v0.2.0.md) · [引用信息](CITATION.cff)
+
+## 实际效果
+
+**趴姿主实验：**十次正式尝试视频中的代表帧，不代表所有试验均无中止。
+
+<img src="figures/fig1_experiment_scene.png" alt="GO2 趴姿前足与人手接触的真实实验画面" width="640">
+
+**站姿定性扩展：**第二个站姿录制段；三段记录与趴姿统计分开。
+
+<img src="figures/fig5_standing_extension.png" alt="GO2 站姿握手的真实实验画面，录制段 2，65 秒" width="640">
+
+两张图片均为已公开的真实录像抽帧，来源和处理见[照片溯源](figures/figure_photo_provenance.md)。原始视频不随仓库分发。
+
 ## 研究范围
 
 - 硬件：Unitree GO2 EDU，自带前置单目 RGB 相机。
@@ -44,7 +71,8 @@ FORMAL-03 单独记录站姿扩展：三个录制段均得到执行层 `STAND_HS
 real_go2/                 真机入口、策略推理、接触检测和 trial 记录
 vision/                   单目视觉与几何辅助模块
 simulation/               MuJoCo 训练、评测和控制辅助模块
-models/                   趴姿主模型与站姿扩展模型
+models/                   趴姿部署模型、趴姿对比权重与站姿扩展模型
+data/policy_comparison/   论文 MLP/GRU 评测 summary、逐步/逐回合数据
 data/formal02/            十次趴姿 JSON、日志、标注、纠错和图源数据
 data/formal03_standing/   站姿扩展记录，和主实验严格分开
 schemas/                  trial schema v4 与数据字典
@@ -55,6 +83,8 @@ docs/                     实验范围、环境、来源和可用性说明
 
 ## 离线检查
 
+首次使用先看[环境安装和分级复现说明](docs/QUICKSTART.md)。只重算论文对比数字需要 NumPy，不需要机器人、相机或 MuJoCo 场景。
+
 以下命令不连接机器人，也不发布控制消息：
 
 ```powershell
@@ -62,9 +92,22 @@ python -m unittest discover -s tests -v
 python -m unittest discover -s simulation/tests -v
 python -m unittest discover -s vision/tests -v
 python tools/release_audit.py
+python simulation/src/reconstruct_metrics.py data/policy_comparison/mlp --tol 1e-9
+python simulation/src/reconstruct_metrics.py data/policy_comparison/gru --tol 1e-9
 ```
 
-真实机器人入口只建议先做源码审查、`--help` 和明确的 dry-run。自动验收不会执行任何联网控制或运动命令。
+真实机器人入口先做静态源码审查；不要假定 `--help` 或名为 dry-run 的参数必然无副作用。自动验收不会执行任何联网控制或运动命令。
+
+## 仿真模型对比：不要与站姿 GRU 混淆
+
+| 趴姿 checkpoint | 输入 / 输出 | 平均距离（m） | 200 步完整轨迹 |
+|---|---|---:|---:|
+| MLP | 27 / 6 | 0.1053 | 20/20 |
+| GRU | 27 / 6 | 0.1187 | 20/20 |
+
+两者使用同一评测 seed 42 和 0.03–0.15 s 延迟范围，各有一个训练 seed。MLP 从旧权重续训，GRU 从随机参数开始，因此这只是两个归档 checkpoint 的描述性比较，不能据此给架构排优劣。20 条评测轨迹不是 20 个独立训练 seed。
+
+论文对比用的原始 `.pt` 权重在 [models/prone_comparison/](models/prone_comparison/MODEL_CARD.md)。[models/standing_extension/](models/standing_extension/MODEL_CARD.md) 的 GRU 是另一套 **29 输入 / 12 输出**模型，不能代替它。FORMAL-02 真机主实验部署的是 MLP。
 
 ## 安全警告
 

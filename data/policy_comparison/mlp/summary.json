@@ -1,0 +1,47 @@
+{
+  "run_id": "eval_prone_px_mlp_20260823-053232_seed42",
+  "timestamp": "2026-08-23T05:32:33.071858",
+  "git_commit": "d07e90025114944271f5fc57d5cd7c00761802e4",
+  "git_dirty": false,
+  "checkpoint": "simulation\\output\\policies\\prone_px_v4\\best_mlp_prone_px.pt",
+  "checkpoint_sha256": "899319bd00b3afb02406b56ad5eb3e491f35ed864258bb9d3fa9cb77e00bf494",
+  "task": "prone_px",
+  "backbone": "mlp",
+  "episodes": 20,
+  "eval_seed": 42,
+  "latency_range": [
+    0.03,
+    0.15
+  ],
+  "schema_version": 2,
+  "python": "3.13.13",
+  "data_dictionary": {
+    "mean_dist_m": "全部时间步(跨回合)的爪-手距离均值；可由 step_metrics.csv.gz 精确重建",
+    "median_dist_m": "全部时间步的距离中位数；可由 step_metrics.csv.gz 精确重建",
+    "p90_dist_m": "全部时间步的距离 P90；可由 step_metrics.csv.gz 精确重建",
+    "mean_final_dist_m": "各回合终止时刻距离的跨回合均值；可由 episode_metrics.csv 重建",
+    "close_rate_5cm": "全部时间步中距离<0.05m 的比例；可由 step_metrics.csv.gz 精确重建",
+    "mean_survival_steps": "回合存活步数的跨回合均值(满分200=4s)；可由 episode_metrics.csv 重建",
+    "survival_rate": "存活满 200 步的回合比例；可由 episode_metrics.csv 重建",
+    "thigh_range_rad": "前腿大腿关节目标在全部时间步的活动范围（只支持'大腿目标发生变化'，不单独证明平滑/准确/握手成功）",
+    "reconstruction_note": "step_metrics.csv.gz 与 episode_metrics.csv 以 .17g 全精度保存，summary 各指标可由其精确重建（重建脚本见 simulation/src/reconstruct_metrics.py）。历史 run（2026-08-22 早批，导出精度 4-5 位小数）仅可'在导出精度内重建'，详见其自身summary 的 reconstruction_note。"
+  },
+  "metrics": {
+    "mean_dist_m": 0.10527811406583186,
+    "median_dist_m": 0.10387402196193171,
+    "p90_dist_m": 0.16244780272645032,
+    "mean_final_dist_m": 0.15761767028898094,
+    "close_rate_5cm": 0.1015,
+    "mean_survival_steps": 200.0,
+    "survival_rate": 1.0,
+    "joint_target_range_rad": {
+      "FR_h": 0.5966454595327377,
+      "FR_t": 0.6057332754135132,
+      "FR_c": 1.1600000262260437,
+      "FL_h": 0.5916762799024582,
+      "FL_t": 0.5106091499328613,
+      "FL_c": 1.1600000262260437
+    },
+    "thigh_range_rad": 0.6057332754135132
+  }
+}

@@ -4,6 +4,23 @@ title: "GO2 Visual Paw Interaction"
 type: software
 authors:
   - name: "tuoLuoSuan"
-version: 0.1.0
-date-released: 2026-08-25
+version: 0.2.0
+date-released: 2026-09-05
 repository-code: "https://github.com/tuoLuoSuan/go2-visual-paw-interaction"
+preferred-citation:
+  type: unpublished
+  title: "Constrained Monocular Vision-Guided Handshake Interaction for Quadruped Robots"
+  authors:
+    - family-names: Wu
+      given-names: Liangbin
+    - family-names: Chen
+      given-names: Shouchen
+    - family-names: Zheng
+      given-names: Yihuang
+    - family-names: Chen
+      given-names: Hongxin
+    - family-names: Chen
+      given-names: Xiaowei
+  year: 2026
+  notes: "Accepted by CCICS 2026, manuscript CC178; publication and indexing not yet verified. Liangbin Wu and Shouchen Chen share first authorship. Xiaowei Chen is the corresponding author."
+  url: "https://github.com/tuoLuoSuan/go2-visual-paw-interaction/blob/main/docs/PAPER.md"

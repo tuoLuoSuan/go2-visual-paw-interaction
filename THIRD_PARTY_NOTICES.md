@@ -1,5 +1,7 @@
 # Third-party components
 
+官方获取入口：[Unitree SDK 2 Python](https://github.com/unitreerobotics/unitree_sdk2_python)、[Unitree MuJoCo](https://github.com/unitreerobotics/unitree_mujoco)、[CycloneDDS](https://github.com/eclipse-cyclonedds/cyclonedds)、[MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker)。这些链接是获取/文档入口，不代表已核实当前下载版本与历史实验完全相同；未锁定的历史 commit 或模型许可仍按下表处理。
+
 本仓库只保存作者项目代码、部署权重和小型证据副本，不捆绑下列第三方源码树或运行时资产。使用者应从官方来源获取相应组件，并遵守其当前许可证和硬件使用条件。
 
 | 组件 | 本研究记录的版本/状态 | 是否捆绑 | 发布边界 |
