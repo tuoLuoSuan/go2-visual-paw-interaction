@@ -12,9 +12,16 @@ Liangbin Wu¹†, Shouchen Chen²†, Yihuang Zheng², Hongxin Chen² and Xiaowe
 
 † Liangbin Wu and Shouchen Chen contributed equally and share first authorship. * Corresponding author: Xiaowei Chen, chenxw@fjnu.edu.cn.
 
-Status checked on 2026-09-05 against the authors' acceptance notice dated 2026-08-27: **accepted by the 3rd International Conference on Computational Intelligence and Communication System (CCICS 2026), manuscript CC178**. The notice lists alternative proceedings series; the final publication venue, volume, pages, DOI and EI indexing have not been verified. Use “accepted”, not “published” or “EI-indexed”.
+Status checked on 2026-09-20 against the authors' acceptance notice dated 2026-08-27: **accepted by the 3rd International Conference on Computational Intelligence and Communication System (CCICS 2026), manuscript CC178**. The notice lists alternative proceedings series; the final publication venue, volume, pages, DOI and EI indexing have not been verified. Use “accepted”, not “published” or “EI-indexed”.
 
-The submitted manuscript uses a six-page JPCS layout; a template is not proof of final publication venue. A public manuscript PDF is not included while its sharing rights are being checked. The acceptance letter, reviewer correspondence and registration materials remain private.
+The current author-prepared version uses a nine-page JPCS layout after the organizer invited an 8–10 page expansion. A template is not proof of final publication venue. The author version and its LaTeX source are included in [`docs/manuscript/`](manuscript/); the acceptance letter, reviewer correspondence, registration materials and raw videos remain private.
+
+## Current manuscript files
+
+- [CC178 expanded nine-page PDF](manuscript/CC178_Expanded_JPCS_9pages.pdf)
+- [LaTeX source package](manuscript/CC178_Expanded_LaTeX_Source.zip)
+
+The expanded version adds implementation details, archived training settings, endpoint decision rules and a descriptive MLP/GRU distance figure. It does not add robot trials or change the ten-trial denominators. The paper reports the author-prepared submission version, not a publisher-formatted proceedings version.
 
 ## What the paper reports
 
@@ -33,7 +40,7 @@ These observations do not establish unrestricted 3D reaching, stability improvem
 | Standing extension | [FORMAL-03](../data/formal03_standing/README.md) | Separate qualitative execution evidence |
 | Representative experiment photos | [Photo provenance](../figures/figure_photo_provenance.md) | Existing public frames, not a substitute for complete trial evidence |
 
-The legacy figures in `figures/` retain their original numbering; they are not promised to match every layout change in the six-page manuscript. Use the result names above to identify the evidence.
+The public figures and structured records support the claims in the manuscript. The PDF and source package above are the exact author-prepared nine-page build; repository figures remain separately indexed for code/data inspection.
 
 ## Citation
 

@@ -12,12 +12,14 @@ Liangbin Wu†, Shouchen Chen†, Yihuang Zheng, Hongxin Chen and Xiaowei Chen*.
 
 † 吴良斌、陈守晨共同第一作者；* 陈小薇为通讯作者。
 
-论文已被 **CCICS 2026 接收，稿件编号 CC178**。这是录用状态，不代表已出版或已被 EI 检索。最终出版信息和 DOI 尚未确认；PDF 待公开权限核实后再添加，私人录用邮件与注册材料不上传。
+论文已被 **CCICS 2026 接收，稿件编号 CC178**。这是录用状态，不代表已出版或已被 EI 检索。最终出版信息和 DOI 尚未确认。作者已将当前九页扩充稿作为作者版本公开；私人录用邮件、注册材料和原始视频不上传。
 
 - [论文信息与结果—材料索引](docs/PAPER.md)
+- [当前九页论文 PDF](docs/manuscript/CC178_Expanded_JPCS_9pages.pdf)
+- [LaTeX 源文件包](docs/manuscript/CC178_Expanded_LaTeX_Source.zip)
 - [快速开始：无需机器狗的离线检查](docs/QUICKSTART.md)
 - [论文中的趴姿 MLP / GRU 对比](data/policy_comparison/README.md)
-- [v0.2.0 更新说明](docs/RELEASE_NOTES_v0.2.0.md) · [引用信息](CITATION.cff)
+- [v0.3.0 更新说明](docs/RELEASE_NOTES_v0.3.0.md) · [引用信息](CITATION.cff)
 
 ## 实际效果
 

@@ -15,9 +15,10 @@
 | 原始视频 | 保留于私人研究归档，本次不上传 GitHub |
 | 相机内参工件 | Windows 最终归档中不存在实体文件；仅记录 ID `intrinsics_calib_20260824_accepted`、SHA-256 `b5b23de64a0dd16f69097f27508a6d595901cb58a8a6f0893ed4c549d5443d48`、RMS 1.5719145083 px，并标为作者接受的偏差 |
 | MediaPipe task 模型 | 不包含；准确来源与许可配对尚未闭环 |
+| 作者版本论文 | 已包含于 `docs/manuscript/`；为作者准备的九页 JPCS 版本，不等同于出版社排版 |
 | 稳定公开标识符 | 尚未分配；当前没有创建 Zenodo、OSF 或机构仓库 DOI |
 
-论文已获 CCICS 2026 录用；代码链接、数据仓库标识符、许可和视频访问方式仍须与最终出版声明保持一致。当前 GitHub 仓库已经公开，但没有 DOI 或开放许可证，且不包含原始视频、第三方 MediaPipe task 模型和相机内参实体文件，因此不能描述为完整的公共数据集或从零复现包。当前元数据见 [PAPER.md](PAPER.md)，本次材料更新见 [v0.2.0](RELEASE_NOTES_v0.2.0.md)。
+论文已获 CCICS 2026 录用；代码链接、数据仓库标识符、许可和视频访问方式仍须与最终出版声明保持一致。当前 GitHub 仓库已经公开，但没有 DOI 或开放许可证，且不包含原始视频、第三方 MediaPipe task 模型和相机内参实体文件，因此不能描述为完整的公共数据集或从零复现包。当前元数据见 [PAPER.md](PAPER.md)，本次材料更新见 [v0.3.0](RELEASE_NOTES_v0.3.0.md)。
 
 ## English availability summary
 
